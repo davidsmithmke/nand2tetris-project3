@@ -17,6 +17,8 @@ CHIP PC {
 
     PARTS:
 	Inc16(in=feedback, out=incremented);
-    Mux8Way16(a=feedback, b=incremented, c=in, d=in, e=false, f=false, g=false, h=false, sel[2]=reset, sel[1]=load, sel[0]=inc, out=input);
-    Register(in=input, load=true, out=feedback, out=out);
+	Mux16(a=in, b=incremented, sel=inc, out=data-incremented);
+	Mux16(a=data-incremented, b=in, sel=load, out=data-load);
+	Mux16(a=data-load, b=false, sel=reset, out=data-reset);
+    Register(in=data-reset, load=true, out=feedback, out=out);
 }
