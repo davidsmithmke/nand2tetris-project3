@@ -20,7 +20,3 @@ CHIP PC {
     Mux8Way16(a=feedback, b=incremented, c=in, d=in, e=false, f=false, g=false, h=false, sel[2]=reset, sel[1]=load, sel[0]=inc, out=input);
     Register(in=input, load=true, out=feedback, out=out);
 }
-
-
-
-
